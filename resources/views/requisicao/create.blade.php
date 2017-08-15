@@ -30,9 +30,22 @@
         <h6>Data: {{ date('d/m/Y') }}</h6>
     </div>
   </div>
-<br><br>
+<br>
 {!! Form::open(array('route' => 'requisicao.store', 'method' => 'POST', 'name'=>'form1', 'id'=>'form1')) !!}
    {!! csrf_field() !!}
+
+   <div class="row">
+     <div class="input-field col s4">
+        {!! Form::text('postoGrad', null, ['id'=>'postoGrad', 'size' => '6', 'width' => '10', 'class'=>'validate']) !!}
+       <label for="postoGrad">Posto/Grad.</label>
+     </div>
+
+     <div class="input-field col s8">
+        {!! Form::text('nomeGuerra', null, ['id'=>'nomeGuerra', 'size' => '6', 'width' => '10', 'class'=>'validate']) !!}
+       <label for="nomeGuerra">Nome de Guerra</label>
+     </div>
+  </div>
+
       <div class="row">
         <div class="input-field col s4">
            {!! Form::text('unidade', null, ['id'=>'unidade', 'size' => '6', 'width' => '10', 'class'=>'validate']) !!}
@@ -86,9 +99,108 @@
             {!! Form::radio('duraMissao', 'Entre 4h e 8h', null, ['id'=>'duraMissao+4']) !!}
             <label for="duraMissao+4">Entre 4h e 8h</label>
           </div>
-
-
         </div>
+
+        <div class="row">
+          <div class="col s6 offset-s5">
+            <h6>SOLICITAÇÃO</h6>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: -36px;">
+          <div class="col s4">
+            Lanche de apoio
+            <div class="input-field inline">
+            {!! Form::text('lancheApoio', null, ['id'=>'lancheApoio', 'class'=>'validate']) !!}
+            <label for="lancheApoio" data-error="wrong" data-success="right">UN</label>
+          </div>
+        </div>
+        <div class="col s4">
+          Guardanapo
+          <div class="input-field inline">
+          {!! Form::text('guardanapo', null, ['id'=>'guardanapo', 'class'=>'validate']) !!}
+          <label for="guardanapo" data-error="wrong" data-success="right">PCT</label>
+          </div>
+        </div>
+      <div class="col s4">
+        Água Mineral
+        <div class="input-field inline">
+        {!! Form::text('aguaMineral', null, ['id'=>'aguaMineral', 'class'=>'validate']) !!}
+        <label for="aguaMineral" data-error="wrong" data-success="right">(1,5L) UN</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: -36px;">
+      <div class="col s4">
+        Copo descartável para água
+        <div class="input-field inline">
+        {!! Form::text('copoDescAgua', null, ['id'=>'copoDescAgua', 'class'=>'validate']) !!}
+        <label for="copoDescAgua" data-error="wrong" data-success="right">UN</label>
+      </div>
+    </div>
+    <div class="col s4">
+      Copo descartável para café
+      <div class="input-field inline">
+      {!! Form::text('copoDescCafe', null, ['id'=>'copoDescCafe', 'class'=>'validate']) !!}
+      <label for="copoDescCafe" data-error="wrong" data-success="right">UN</label>
+      </div>
+    </div>
+  <div class="col s4">
+    Café
+    <div class="input-field inline">
+    {!! Form::text('cafe', null, ['id'=>'cafe', 'class'=>'validate']) !!}
+    <label for="cafe" data-error="wrong" data-success="right">Litros</label>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="margin-top: -36px;">
+  <div class="col s4">
+    Gelo
+    <div class="input-field inline">
+    {!! Form::text('gelo', null, ['id'=>'gelo', 'class'=>'validate']) !!}
+    <label for="gelo" data-error="wrong" data-success="right">KG</label>
+  </div>
+</div>
+<div class="col s8">
+  Outros
+  <div class="input-field inline">
+  {!! Form::text('outros', null, ['id'=>'outros', 'size'=>'80', 'class'=>'validate']) !!}
+  <label for="outros" data-error="wrong" data-success="right"></label>
+  </div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col s6 offset-s5">
+    <h6>Militares envolvidos na missão</h6>
+  </div>
+  <div class="col s6">
+    <div class="pull-right">
+      <a class="btn-floating btn-large waves-effect waves-light red" id="btAdd" aria-label="addCampo" onclick="addCampos()"><i class="material-icons">add</i></a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div id="camposAdd">
+
+      <div class="input-field col s2 offset-s2">
+        {!! Form::text('postoGrad', null, ['id'=>'postoGrad', 'class'=>'validate']) !!}
+        <label for="postoGrad" data-error="wrong" data-success="right">Posto/Grad.</label>
+      </div>
+
+      <div class="input-field col s6">
+        {!! Form::text('nomeCompleto', null, ['id'=>'nomeCompleto', 'class'=>'validate']) !!}
+        <label for="nomeCompleto" data-error="wrong" data-success="right">Nome Completo</label>
+      </div>
+
+  </div>
+
+  <div id="campoPai"></div>
+
+</div>
 
     {!! Form::close() !!}
 
