@@ -15,7 +15,9 @@ class CreateMilitarsTable extends Migration
     {
         Schema::create('militars', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('postoGrad');
+            $table->integer('comissaria_id');
+            $table->foreign('comissaria_id')->references('id')->on('comissarias')->onDelete('cascade');
+            $table->text('postoG');
             $table->text('nomeCompleto');
             $table->text('om');
             $table->timestamps();

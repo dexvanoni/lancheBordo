@@ -100,28 +100,6 @@
   });
 
   </script>
-  <script type="text/javascript">
-    var qtdeCampos = 1;
-      function addCampos() {
-      var objPai = document.getElementById("campoPai");
-      var x = document.getElementById("camposAdd").innerHTML;
-      //Criando o elemento DIV;
-      var objFilho = document.createElement("div");
-      //Definindo atributos ao objFilho:
-      objFilho.setAttribute("id","trecho"+qtdeCampos);
-      //Inserindo o elemento no pai:
-      objPai.appendChild(objFilho);
-      //Escrevendo algo no filho recém-criado:
-      document.getElementById("trecho"+qtdeCampos).innerHTML = "<div id='camposAdd'><div class='row'><div class='input-field col s2 offset-s2'><input type='text' name='postoGrad' id='postoGrad' class='validate'><label for='postoGrad' data-error='wrong' data-success='right'>Posto/Grad.</label></div><div class='input-field col s6'><input type='text' name='nomeCompleto' id='nomeCompleto' class='validate'><label for='nomeCompleto' data-error='wrong' data-success='right'>Nome Completo</label></div></div></div><div class='col s2'><a class='btn-floating btn-large waves-effect waves-light' id='btAdd' aria-label='addCampo' onclick='removerCampo("+qtdeCampos+")'><i class='material-icons'>highlight_off</i></a>";
-      qtdeCampos++;
-      //$('#qtdeCampos').val(qtdeCampos);
-    }
-    function removerCampo(id) {
-    var objPai = document.getElementById("campoPai");
-    var objFilho = document.getElementById("trecho"+id);
-    //Removendo o DIV com id específico do nó-pai:
-    var removido = objPai.removeChild(objFilho);
-    }
-</script>
+
   </body>
 </html>

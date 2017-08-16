@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Comissaria;
 use App\Militar;
 use App\AdmRancho;
@@ -34,15 +35,16 @@ class RequisicaoController extends Controller
       $comissaria = Comissaria::create($request->all());
 
       $tr = $request->all();
-
+      dd($request->all());
+      exit;
       foreach($tr['tr'] as $values)
         {
-          $diaria->militares()->create($values);
+          $comissaria->militares()->create($values);
         }
 
       Session::flash('mensagem_create', 'Requisição para o Sr. ' .$request->postoGrad. ' - ' .$request->nomeGuerra. ' foi adicionada com sucesso!');
 
-      return redirect()->route('welcome');
+      return view('welcome');
 
     }
 

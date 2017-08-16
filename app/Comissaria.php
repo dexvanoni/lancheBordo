@@ -7,10 +7,36 @@ use App\Militar;
 
 class Comissaria extends Model
 {
-  public function militares(){
-  return $this->hasMany(Militar::class);
-}
+  protected $table = 'comissarias';
 
+  public function militares()
+  {
+    return $this->hasMany(Militar::class);
+  }
+
+protected $fillable = [
+  'data',
+  'unidade',
+  'procedencia',
+  'destino',
+  'matViatura',
+  'os',
+  'prevEntrega',
+  'hora',
+  'duraMissao',
+  'lancheApoio',
+  'aguaMineral',
+  'cafe',
+  'gelo',
+  'guardanapo',
+  'copoDescAgua',
+  'copoDescCafe',
+  'outros',
+  'postoGrad',
+  'nomeGuerra',
+  'created_at',
+  'updated_at'
+];
 
 
 }
