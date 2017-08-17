@@ -35,8 +35,7 @@ class RequisicaoController extends Controller
       $comissaria = Comissaria::create($request->all());
 
       $tr = $request->all();
-      dd($request->all());
-      exit;
+
       foreach($tr['tr'] as $values)
         {
           $comissaria->militares()->create($values);

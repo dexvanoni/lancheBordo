@@ -34,6 +34,7 @@ protected $fillable = [
   'outros',
   'postoGrad',
   'nomeGuerra',
+  'atendimento',
   'created_at',
   'updated_at'
 ];

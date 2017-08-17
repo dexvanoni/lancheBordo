@@ -8,7 +8,7 @@
       <!--Import materialize.css-->
     <!--<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>-->
     <link href="/materialize/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
 
       <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,6 +18,14 @@
         ]); ?>
     </script>
 
+    <style media="screen">
+    html, body {height:100%;}
+    .page-footer {
+      position:absolute;
+    bottom:0;
+    width:100%;
+  }
+    </style>
   </head>
   <body>
     <?php $tela = ''; ?>
@@ -55,8 +63,6 @@
          $('.collapsible').collapsible();
          $('select').material_select();
          $('#pesquisa').DataTable( {
-           "scrollY":        "300px",
-             "scrollCollapse": true,
              "language": {
                "url": "/js/Portuguese-Brasil.json"
              }
@@ -100,6 +106,6 @@
   });
 
   </script>
-
+@yield('rodape')
   </body>
 </html>

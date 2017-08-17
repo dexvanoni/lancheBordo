@@ -34,6 +34,7 @@ class CreateComissariasTable extends Migration
             $table->text('outros');
             $table->text('postoGrad');
             $table->text('nomeGuerra');
+            $table->text('atendimento');
             $table->timestamps();
     });
   }
