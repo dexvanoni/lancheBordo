@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Comissaria;
 use App\Militar;
 use App\AdmRancho;
-
+use Response;
 
 class RequisicaoController extends Controller
 {
@@ -54,6 +54,22 @@ class RequisicaoController extends Controller
         return view('requisicao.index',compact('comissaria'));
 
       }
+
+      public function show($id){
+
+        $comissaria = Comissaria::find($id);
+        return view('requisicao.show', compact('comissaria'));
+      }
+
+      public function update(Request $request, $id){
+        $comissaria = Comissaria::find($id);
+        $comissaria->atendimento = $request->input('atendimento');
+        $comissaria->save();
+
+        Session::flash('mensagem_edit', "Requisição Atendida!");
+        return redirect()->route('volta');
+      }
+
 
 
 }

@@ -2,17 +2,17 @@
 @extends('layout')
 
 @section('titulo')
-  COMISSARIA - Requisições
+  COMISSARIA - Administração
 @endsection
 
 @section('topo')
-  COMISSARIA - Ver Requisições
+  COMISSARIA - Adm
 @endsection
 
 
 @section('conteudo')
   <div class="container">
-<br>
+  <br>
   <table id="pesquisa">
         <thead>
           <tr>
@@ -22,7 +22,8 @@
             <th>Unidade</th>
             <th>Procedência</th>
             <th>Destino</th>
-            <th>Atendimento</th>
+            <th>Data de Abertura</th>
+            <th>Ação</th>
           </tr>
         </thead>
 
@@ -31,18 +32,17 @@
             <tr>
               <th scope="row">{{ $comissarias->id }}</th>
               <td style="width: 15%" >{{ $comissarias->os}}</td>
-              <td style="width: 35%" >{{ $comissarias->postoGrad }} {{$comissarias->nomeGuerra}}</td>
+              <td style="width: 30%" >{{ $comissarias->postoGrad }} {{$comissarias->nomeGuerra}}</td>
               <td style="width: 15%">{{ $comissarias->unidade }}</td>
-              <td style="width: 15%">{{ $comissarias->procedencia }}</td>
-              <td style="width: 15%">{{ $comissarias->destino }}</td>
+              <td style="width: 12%">{{ $comissarias->procedencia }}</td>
+              <td style="width: 12%">{{ $comissarias->destino }}</td>
+              <td style="width: 20%">{{ $comissarias->created_at }}</td>
               <td style="width: 15%">
-              @if ($comissarias->atendimento == 'new')
-                <i class="material-icons tooltipped" data-tooltip="Em atendimento" >av_timer</i>
-              @elseif ($comissarias->atendimento == 'ok')
-                <i class="material-icons tooltipped" data-tooltip="Atendido" >check</i>
-              @elseif ($comissarias->atendimento == 'not')
-                <i class="material-icons tooltipped" data-tooltip="Recusado" >close</i>
-              @endif
+                <ul class="list-inline list-small">
+                  <li title="Editar">
+                    <a href="{{ route('requisicao.show', ['comissarias' => $comissarias->id]) }}" class="btn-floating tooltipped waves-effect waves-light red" data-tooltip='Ver Requisição'><i class="material-icons">search</i></a>
+                  </li>
+                </ul>
               </td>
             </tr>
           @endforeach

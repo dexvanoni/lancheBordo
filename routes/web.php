@@ -19,4 +19,11 @@ Route::get('/login', function(){
   return view('login');
 });
 
+Route::get('/volta', array(
+  'as' => 'volta',
+  'uses' => 'LoginAdmController@voltar'
+));
+
+Route::post('/', 'LoginAdmController@login');
+
 Route::resource('requisicao', 'RequisicaoController');
