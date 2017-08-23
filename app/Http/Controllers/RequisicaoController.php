@@ -41,7 +41,7 @@ class RequisicaoController extends Controller
           $comissaria->militares()->create($values);
         }
 
-      Session::flash('mensagem_create', 'Requisição para o Sr. ' .$request->postoGrad. ' - ' .$request->nomeGuerra. ' foi adicionada com sucesso!');
+      Session::flash('mensagem_create', 'Requisição para o Sr. ' .$request->postoGrad. ' ' .$request->nomeGuerra. ' foi adicionada com sucesso!');
 
       return view('welcome');
 
@@ -58,7 +58,9 @@ class RequisicaoController extends Controller
       public function show($id){
 
         $comissaria = Comissaria::find($id);
-        return view('requisicao.show', compact('comissaria'));
+        $envolvidos = Comissaria::find($id)->militares;
+        $total = $envolvidos->count();
+        return view('requisicao.show', compact('comissaria', 'envolvidos', 'total'));
       }
 
       public function update(Request $request, $id){

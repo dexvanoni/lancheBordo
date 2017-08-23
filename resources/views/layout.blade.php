@@ -58,6 +58,7 @@
 <script src="/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
       $(document).ready(function(){
+        $("#envia").hide();
         $('.tooltipped').tooltip({delay: 50});
          $(".button-collapse").sideNav();
          $('.collapsible').collapsible();
@@ -68,6 +69,14 @@
              }
          } );
        });
+       $("#atendimentoS").click(function(){
+         if($(this).prop('checked')){
+           $("#envia").show();
+         }});
+         $("#atendimentoN").click(function(){
+           if($(this).prop('checked')){
+             $("#envia").show();
+           }});
   </script>
   <script type="text/javascript">
   $('.datepicker').pickadate({

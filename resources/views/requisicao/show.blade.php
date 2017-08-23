@@ -12,7 +12,13 @@
 
 @section('conteudo')
 <div class="container">
-
+  <div class="row">
+    <div class="col s11">
+      <blockquote>
+        Verifique o preenchimento da requisição e selecione um modo de atendimento!
+      </blockquote>
+    </div>
+  </div>
     <div class="row">
       <div class="col s10 offset-s1">
         <div class="card-panel blue lighten-5">
@@ -131,8 +137,26 @@
           <li>
             <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Militares Envolvidos</div>
             <div class="collapsible-body">
+              <label>Número de envolvidos: {{$total}}</label>
+              <table>
+                    <thead>
+                      <tr>
+                        <th>Posto/Grad</th>
+                        <th>Nome</th>
+                        <th>OM</th>
+                      </tr>
+                    </thead>
 
-                <!--RELAÇÃO DE MILITARES-->
+                    <tbody>
+              @foreach ($envolvidos as $militars)
+                <tr>
+                  <td>{{$militars->postoG}}</td>
+                  <td>{{$militars->nomeCompleto}}</td>
+                  <td>{{$militars->om}}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
 
             </div>
           </li>
@@ -157,7 +181,7 @@
 
         <div class="row">
           <div class="col s5 offset-s5">
-            <button class="btn waves-effect waves-light" type="submit" name="button">Enviar
+            <button id="envia" class="btn waves-effect waves-light" type="submit" name="envia">Enviar
             <i class="material-icons left">flight_takeoff</i>
             </button>
           </div>

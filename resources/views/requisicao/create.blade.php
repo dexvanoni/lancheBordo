@@ -33,7 +33,7 @@
     </div>
   </div>
 
-<div style="margin-top: 80px" class="row">
+<div class="row">
   <div class="col s11">
     <blockquote>
       Preencha o formulário de cada aba abaixo e clique em enviar!<br>
