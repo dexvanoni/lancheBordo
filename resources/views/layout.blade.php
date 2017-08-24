@@ -6,9 +6,10 @@
     <!--<link type="text/css" rel="stylesheet" href="/materialize/css/icons.css"  media="screen,projection"/>-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-    <!--<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"  media="screen,projection"/>-->
-    <link href="/materialize/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
+    <!--<link type="text/css" rel="stylesheet" href="/materialize/css/materialize.min.css"/>-->
+
+    <link rel="stylesheet" href="/materialize/css/ghpages-materialize.css" media="screen,projection">
+    <link href="/css/jquery.dataTables.min.css" rel="stylesheet" media="screen,projection">
 
       <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -29,10 +30,18 @@
   </head>
   <body>
     <?php $tela = ''; ?>
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="{{ route('requisicao.index')}}">Ver Requisições</a></li>
+      <li><a href="{{ route('requisicao.create')}}">Fazer nova Requisição</a></li>
+    </ul>
     <nav>
        <div class="nav-wrapper">
          <a style="margin-left: 2em" href="/" class="brand-logo">@yield('topo')</a>
          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+         <ul class="right hide-on-med-and-down">
+      <!-- Dropdown Trigger -->
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Requisições<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
        </div>
      </nav>
 
@@ -52,23 +61,21 @@
   </ul>
 </div>
 
-<script type="text/javascript" src="/materialize/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.12.4.js"></script>
 <script src="/materialize/js/materialize.js"></script>
 <script src="/materialize/js/materialize.min.js"></script>
 <script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.material.min.js"></script>
 <script type="text/javascript">
       $(document).ready(function(){
+
         $("#envia").hide();
+        $(".dropdown-button").dropdown();
         $('.tooltipped').tooltip({delay: 50});
          $(".button-collapse").sideNav();
          $('.collapsible').collapsible();
-         $('select').material_select();
-         $('#pesquisa').DataTable( {
-             "language": {
-               "url": "/js/Portuguese-Brasil.json"
-             }
-         } );
-       });
+         $('#pesquisa').DataTable();
+          $('select').material_select();
        $("#atendimentoS").click(function(){
          if($(this).prop('checked')){
            $("#envia").show();
@@ -77,6 +84,7 @@
            if($(this).prop('checked')){
              $("#envia").show();
            }});
+         });
   </script>
   <script type="text/javascript">
   $('.datepicker').pickadate({

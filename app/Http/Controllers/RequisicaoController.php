@@ -50,7 +50,7 @@ class RequisicaoController extends Controller
     public function index()
       {
 
-        $comissaria = Comissaria::orderBy('id', 'DESC')->paginate(10);
+        $comissaria = Comissaria::orderBy('id')->paginate(5000);
         return view('requisicao.index',compact('comissaria'));
 
       }
