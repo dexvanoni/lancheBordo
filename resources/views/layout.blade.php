@@ -26,13 +26,26 @@
     bottom:0;
     width:100%;
   }
+  ul.right.hide-on-med-and-down{
+    background: #42a5f5 !important;
+  }
+  a.dropdown-button:hover{
+    background: #42a5f5 !important;
+  }
+  a.teste:hover{
+    background: #DFDFDF !important;
+  }
     </style>
   </head>
   <body>
-    <?php $tela = ''; ?>
+
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="{{ route('requisicao.index')}}">Ver Requisições</a></li>
-      <li><a href="{{ route('requisicao.create')}}">Fazer nova Requisição</a></li>
+      <li><a class="teste" href="{{ route('requisicao.index')}}">Ver Requisições</a></li>
+      <li><a class="teste" href="{{ route('requisicao.create')}}">Fazer nova Requisição</a></li>
+      @if (isset($tela) AND isset($admin))
+        <li><a class="teste" href="{{ route('relatorios')}}">Relatórios</a></li>
+        <li><a class="teste" href="{{ route('volta')}}">Atender</a></li>
+      @endif
     </ul>
     <nav>
        <div class="nav-wrapper">
@@ -40,7 +53,7 @@
          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
          <ul class="right hide-on-med-and-down">
       <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Requisições<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li class="teste" ><a class="dropdown-button" href="#!" data-activates="dropdown1">Requisições<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
        </div>
      </nav>

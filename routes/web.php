@@ -26,4 +26,11 @@ Route::get('/volta', array(
 
 Route::post('/', 'LoginAdmController@login');
 
+Route::post('/relatorio', 'RequisicaoController@pesquisa');
+
 Route::resource('requisicao', 'RequisicaoController');
+
+Route::get('/relatorios', array(
+  'as' => 'relatorios',
+  'uses' => 'RequisicaoController@relatorios'
+));

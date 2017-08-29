@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use App\Comissaria;
 use App\Militar;
 use App\AdmRancho;
@@ -50,7 +51,7 @@ class RequisicaoController extends Controller
     public function index()
       {
 
-        $comissaria = Comissaria::orderBy('id')->paginate(5000);
+        $comissaria = Comissaria::orderBy('id')->paginate(50000);
         return view('requisicao.index',compact('comissaria'));
 
       }
@@ -60,7 +61,9 @@ class RequisicaoController extends Controller
         $comissaria = Comissaria::find($id);
         $envolvidos = Comissaria::find($id)->militares;
         $total = $envolvidos->count();
-        return view('requisicao.show', compact('comissaria', 'envolvidos', 'total'));
+        $tela = 'adm';
+        $admin = 'admin';
+        return view('requisicao.show', compact('comissaria', 'envolvidos', 'total', 'tela', 'admin'));
       }
 
       public function update(Request $request, $id){
@@ -72,6 +75,37 @@ class RequisicaoController extends Controller
         return redirect()->route('volta');
       }
 
+      public function relatorios(){
+        $tela = 'adm';
+        $admin = 'admin';
+
+        $ano = date('Y');
+        $comissaria = Comissaria::where('atendimento', '=', 'ok')->whereYear('updated_at', $ano);;
+        $comissaria2 = Comissaria::where('atendimento', '=', 'not')->whereYear('updated_at', $ano);;
+        $total = $comissaria->count();
+        $total2 = $comissaria2->count();
+        return view('requisicao.relatorios', compact('ano', 'comissaria', 'tela', 'admin', 'total', 'total2'));
+      }
+
+      public function pesquisa(Request $request){
+        $tela = 'adm';
+        $admin = 'admin';
+
+        $ano = date('Y');
+
+        $comissaria = Comissaria::where('atendimento', '=', 'ok')->whereYear('updated_at', $ano);
+        $comissaria2 = Comissaria::where('atendimento', '=', 'not')->whereYear('updated_at', $ano);;
+        $total = $comissaria->count();
+        $total2 = $comissaria2->count();
+
+        $de = $request->get('de');
+        $ate = $request->get('ate');
+
+        //$rela = DB::table('comissarias')->whereBetween('updated_at', [$de, $ate])->where('atendimento', '=', 'ok')->get();
+        $qtn = Comissaria::withCount('militares')->whereBetween('updated_at', [$de, $ate])->where('atendimento', '=', 'ok')->orderBy('id', 'DESC')->get();
+        $tot = $qtn->count();
+        return view('requisicao.relatorios', compact('ano', 'de', 'ate', 'qtn', 'comissaria', 'tela', 'admin', 'total', 'total2', 'tot'));
+      }
 
 
 }

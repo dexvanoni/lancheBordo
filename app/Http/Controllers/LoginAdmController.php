@@ -18,11 +18,14 @@ class LoginAdmController extends Controller
   $senha = AdmRancho::where('senha', '=', $request->get('password'))->first();
 
     if( $usuario && $senha) {
-      $admin='';
       Session::put('admin', $usuario->nome);
-      $comissaria = Comissaria::where('atendimento', '=', 'new')->paginate(10);
-
-      return view('adm.administracao', compact('usuario', 'comissaria'));
+      //$comissaria = Comissaria::where('atendimento', '=', 'new')->paginate(50000);
+      $comissaria = DB::table('comissarias')
+                ->orderBy('created_at', 'desc')
+                ->get();
+      $tela = 'adm';
+      $admin = 'admin';
+      return view('adm.administracao', compact('usuario', 'comissaria', 'tela', 'admin'));
 
       } else {
 
@@ -34,8 +37,10 @@ class LoginAdmController extends Controller
 
   public function voltar(){
 
-    $comissaria = Comissaria::where('atendimento', '=', 'new')->paginate(10);
-
-    return view('adm.administracao', compact('comissaria'));
+    //$comissaria = Comissaria::where('atendimento', '=', 'new')->paginate(50000);
+    $comissaria = DB::table('comissarias')->orderBy('created_at', 'DESC')->get();
+    $tela = 'adm';
+    $admin = 'admin';
+    return view('adm.administracao', compact('comissaria', 'tela', 'admin'));
   }
 }

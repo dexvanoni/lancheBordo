@@ -220,6 +220,7 @@ Outros
   </li>
 </ul>
 {!! Form::hidden('atendimento', 'new') !!}
+{!! Form::hidden('autoriza', 'new') !!}
 
 <div class="row">
   <div class="col s5 offset-s5">
