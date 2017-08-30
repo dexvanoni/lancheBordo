@@ -14,10 +14,12 @@
 
 <div class="container">
   <div class="row">
-    <div style="margin-top: 20px" class="col offset-s12">
-        <a class="btn tooltipped btn-floating pulse" href="/login" data-position="top" data-delay="50" data-tooltip="Administração"><i class="material-icons">person</i></a>
+    <div style="margin-top: 20px" class="col s2">
+        <a class="btn tooltipped btn-floating pulse" href="/login" data-position="top" data-delay="50" data-tooltip="Comissaria"><i class="material-icons">local_dining</i></a>
+        <a class="btn tooltipped btn-floating pulse red" href="/log" data-position="top" data-delay="50" data-tooltip="Autenticadores"><i class="material-icons">event_available</i></a>
     </div>
   </div>
+
   <div class="row">
     <div class="center">
       <img src="/imagens/acantoNew.png" alt="acanto" width="250em" height="270em">

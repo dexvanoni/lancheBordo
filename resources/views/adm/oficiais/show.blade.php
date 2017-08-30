@@ -11,6 +11,13 @@
 
 
 @section('conteudo')
+  @php
+    $pgrad = Session::get('grad');
+    $ncompleto = Session::get('pesncompleto');
+    $pescodigo = Session::get('pescodigo');
+
+    $nnome = $pgrad .' '. $ncompleto;
+  @endphp
 <div class="container">
   <div class="row">
     <div class="col s11">
@@ -168,42 +175,10 @@
 
           </div>
         </li>
-        <li>
-          <div class="collapsible-header"><i class="material-icons">flash_auto</i>Autorização</div>
-          <div class="collapsible-body">
-            @php
-              if ($comissaria->autoriza == 'ok') {
-                $resp = 'Autorizada';
-              }else{
-                $resp = 'NÃO AUTORIZADA';
-              }
-            @endphp
-
-            <h6>Resposta do OPO ou OF. de Ligação: {{ $resp }}</h6>
-            <table>
-                  <thead>
-                    <tr>
-                      <th>Saram</th>
-                      <th>Nome</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-
-              <tr>
-                <td>{{$comissaria->saram_aut}}</td>
-                <td>{{$comissaria->nome_aut}}</td>
-              </tr>
-
-          </tbody>
-        </table>
-
-          </div>
-        </li>
       </ul>
 
       {!! Form::model($comissaria,
-         ['route' => ['requisicao.update', 'comissaria' => $comissaria->id],
+         ['route' => ['oficiais.update', 'comissaria' => $comissaria->id],
          'class' => 'form',
          'method' => 'PUT']) !!}
 
@@ -211,12 +186,12 @@
         <h5>Atendimento:</h5>
       </div>
       <div class="col s2" style="margin-top: 14px;">
-        {!! Form::radio('atendimento', 'ok', null, ['id'=>'atendimentoS']) !!}
-        <label for="atendimentoS">Atender</label>
+        {!! Form::radio('autoriza', 'ok', null, ['id'=>'autorizaS']) !!}
+        <label for="autorizaS">Autorizar</label>
       </div>
       <div class="col s2" style="margin-top: 14px;">
-        {!! Form::radio('atendimento', 'not', null, ['id'=>'atendimentoN']) !!}
-        <label for="atendimentoN">Recusar</label>
+        {!! Form::radio('autoriza', 'not', null, ['id'=>'autorizaN']) !!}
+        <label for="autorizaN">Recusar</label>
       </div>
 
       <div class="row">
@@ -226,6 +201,9 @@
           </button>
         </div>
       </div>
+
+      {!! Form::hidden('nome_aut', $nnome) !!}
+      {!! Form::hidden('saram_aut', $pescodigo) !!}
 
           {!! Form::close() !!}
 

@@ -221,6 +221,8 @@ Outros
 </ul>
 {!! Form::hidden('atendimento', 'new') !!}
 {!! Form::hidden('autoriza', 'new') !!}
+{!! Form::hidden('saram_aut', '000000') !!}
+{!! Form::hidden('nome_aut', 'nenhum') !!}
 
 <div class="row">
   <div class="col s5 offset-s5">

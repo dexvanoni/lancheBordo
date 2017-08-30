@@ -87,7 +87,14 @@
         $('.tooltipped').tooltip({delay: 50});
          $(".button-collapse").sideNav();
          $('.collapsible').collapsible();
-         $('#pesquisa').DataTable();
+         $('#pesquisa').DataTable({
+           "order": [[ 6, "desc" ]]
+          } );
+          $('#inicial').DataTable({
+            "order": [[ 6, "desc" ]]
+
+           } );
+
           $('select').material_select();
        $("#atendimentoS").click(function(){
          if($(this).prop('checked')){
@@ -97,6 +104,15 @@
            if($(this).prop('checked')){
              $("#envia").show();
            }});
+
+           $("#autorizaS").click(function(){
+             if($(this).prop('checked')){
+               $("#envia").show();
+             }});
+             $("#autorizaN").click(function(){
+               if($(this).prop('checked')){
+                 $("#envia").show();
+               }});
          });
   </script>
   <script type="text/javascript">

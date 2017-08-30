@@ -2,11 +2,11 @@
 @extends('layout')
 
 @section('titulo')
-  COMISSARIA - Administração
+  COMISSARIA - Autorização
 @endsection
 
 @section('topo')
-  COMISSARIA - Adm
+  COMISSARIA - Autorização
 @endsection
 
 
@@ -50,12 +50,8 @@
               <td class="center" style="width: 15%">
                 <ul class="list-inline list-small">
                   <li>
-                    @if (($comissarias->atendimento == 'new') AND ($comissarias->autoriza == 'ok') )
-                        <a href="{{ route('requisicao.show', ['comissarias' => $comissarias->id]) }}" class="btn-floating tooltipped waves-effect waves-light green" data-tooltip='Ver Requisição - Autorizada'><i class="material-icons">search</i></a>
-                    @elseif (($comissarias->atendimento == 'new') AND ($comissarias->autoriza == 'not'))
-                        <a href="{{ route('requisicao.show', ['comissarias' => $comissarias->id]) }}" class="btn-floating tooltipped waves-effect waves-light red" data-tooltip='Ver Requisição - Não Autorizada'><i class="material-icons">search</i></a>
-                    @elseif ($comissarias->atendimento != 'new')
-                        <a href="{{ route('requisicao.show', ['comissarias' => $comissarias->id]) }}" class="btn-floating tooltipped waves-effect waves-light yellow" data-tooltip='Ver Requisição - Atendida'><i class="material-icons">search</i></a>
+                    @if (($comissarias->atendimento == 'new') AND ($comissarias->autoriza == 'new') )
+                        <a href="{{ route('oficiais.show', ['comissarias' => $comissarias->id]) }}" class="btn-floating tooltipped waves-effect waves-light green" data-tooltip='Autorizar'><i class="material-icons">search</i></a>
                     @endif
                   </li>
                 </ul>

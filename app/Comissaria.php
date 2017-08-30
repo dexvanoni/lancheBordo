@@ -37,7 +37,9 @@ protected $fillable = [
   'atendimento',
   'created_at',
   'updated_at',
-  'autoriza'
+  'autoriza',
+  'nome_aut',
+  'saram_aut'
 ];
 
 

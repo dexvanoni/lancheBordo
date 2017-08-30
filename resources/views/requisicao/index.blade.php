@@ -13,7 +13,7 @@
 @section('conteudo')
   <div class="container">
 <br>
-  <table id="pesquisa">
+  <table id="inicial" class="hover">
         <thead>
           <tr>
             <th class="center">N°</th>
@@ -22,6 +22,7 @@
             <th class="center">Unidade</th>
             <th class="center">Procedência</th>
             <th class="center">Destino</th>
+            <th class="center">Dt. Criação</th>
             <th class="center">Autorização</th>
             <th class="center">Atendimento</th>
           </tr>
@@ -31,15 +32,16 @@
           @foreach ($comissaria as $comissarias)
             <tr>
               <th scope="row">{{ $comissarias->id }}</th>
-              <td class="center" style="width: 15%" >{{ $comissarias->os}}</td>
-              <td class="center" style="width: 25%" >{{ $comissarias->postoGrad }} {{$comissarias->nomeGuerra}}</td>
+              <td class="center" style="width: 10%" >{{ $comissarias->os}}</td>
+              <td class="center" style="width: 20%" >{{ $comissarias->postoGrad }} {{$comissarias->nomeGuerra}}</td>
               <td class="center" style="width: 15%">{{ $comissarias->unidade }}</td>
               <td class="center" style="width: 15%">{{ $comissarias->procedencia }}</td>
               <td class="center" style="width: 15%">{{ $comissarias->destino }}</td>
+              <td class="center" style="width: 20%">{{ date('d/m/y H:i', strtotime($comissarias->created_at)) }}</td>
               <td class="center" style="width: 15%">
                 @if ($comissarias->autoriza == 'not')
                   <i class="material-icons tooltipped" data-tooltip="NÃO autorizado pelo OPO ou OF. de ligação" >lock</i>
-                @elseif ($comissarias->atendimento == 'new')
+                @elseif ($comissarias->autoriza == 'new')
                   <i class="material-icons tooltipped" data-tooltip="Aguardando autorização" >av_timer</i>
                 @elseif ($comissarias->autoriza == 'ok')
                   <i class="material-icons tooltipped" data-tooltip="Autorizado" >spellcheck</i>

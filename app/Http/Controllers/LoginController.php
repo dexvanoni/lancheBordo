@@ -144,10 +144,16 @@ class LoginController extends Controller
 
               Session::flash('msgLogin', 'Sucesso');
 
-              return view('adm.oficiais.index', compact('usuario', 'posto', 'adm2', 'valor1'));
+              $comissaria = DB::table('comissarias')
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+              $tela = 'adm';
+              $admin = 'admin';
+
+              return view('adm.oficiais.index', compact('usuario', 'comissaria', 'tela', 'admin', 'posto', 'adm2', 'valor1'));
             } else {
               Session::flash('msgLogin', 'Erro! Tente Novamente.');
-              return view('login');
+              return view('adm.oficiais.login');
             }
           }
           //-------------------------------------------------------------------------------------

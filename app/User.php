@@ -9,13 +9,18 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $connection = 'pgsql';
+    protected $table = 'tb_pessoas';
+    protected $primaryKey = 'pesid';
+
+    public function pessoa()
+  {
+    return $this->hasOne('Pessoa');
+  }
+
+
     protected $fillable = [
-        'name', 'email', 'password',
+      'pescodigo', 'sasis_senha',
     ];
 
     /**
