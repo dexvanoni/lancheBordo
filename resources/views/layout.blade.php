@@ -41,7 +41,7 @@
 
     <ul id="dropdown1" class="dropdown-content">
       <li><a class="teste" href="{{ route('requisicao.index')}}">Ver Requisições</a></li>
-      <li><a class="teste" href="{{ route('requisicao.create')}}">Fazer nova Requisição</a></li>
+      <li><a class="teste" href="{{ route('requisicao.create')}}">Nova Requisição</a></li>
       @if (isset($tela) AND isset($admin))
         <li><a class="teste" href="{{ route('relatorios')}}">Relatórios</a></li>
         <li><a class="teste" href="{{ route('volta')}}">Atender</a></li>
@@ -49,7 +49,7 @@
     </ul>
     <nav>
        <div class="nav-wrapper">
-         <a style="margin-left: 2em" href="/" class="brand-logo">@yield('topo')</a>
+         <a style="margin-left: 2em" href="/" class="brand-logo tooltipped" data-tooltip="Voltar a tela inicial">@yield('topo')</a>
          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
          <ul class="right hide-on-med-and-down">
       <!-- Dropdown Trigger -->
@@ -67,7 +67,7 @@
     <i class="material-icons">menu</i>
   </a>
   <ul>
-    <li><a href="http://10.152.16.203/eti" target="_blank" class="btn-floating tooltipped red" data-position="top" data-delay="50" data-tooltip="Página ATIC-CG"><i class="material-icons">airplanemode_active</i></a></li>
+    <li><a href="http://10.152.16.203/eti" target="_blank" class="btn-floating tooltipped red" data-position="top" data-delay="50" data-tooltip="Página ATIC-CG"><i class="material-icons">laptop_mac</i></a></li>
     <li><a href="http://10.152.16.203/glpi" target="_blank" class="btn-floating tooltipped yellow darken-1" data-position="top" data-delay="50" data-tooltip="HelpDesk TI"><i class="material-icons">library_books</i></a></li>
     <li><a href="http://www.gapcg.intraer/gapcg/index.php/chefe" target="_blank" class="btn-floating tooltipped green" data-position="top" data-delay="50" data-tooltip="Conheça o Chefe do GAP-CG"><i class="material-icons">person_pin</i></a></li>
     <li><a href="http://servicos.sti.intraer/portal/consumer_email" target="_blank" class="btn-floating tooltipped blue" data-position="top" data-delay="50" data-tooltip="Webmail"><i class="material-icons">email</i></a></li>

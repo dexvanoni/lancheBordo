@@ -78,13 +78,14 @@
             <table>
               <thead>
                 <tr>
-                  <th>N°</th>
-                  <th>Ord Missão</th>
-                  <th>Solicitante</th>
-                  <th>Unidade</th>
-                  <th>Procedência</th>
-                  <th>Destino</th>
-                  <th>N° Envolvidos</th>
+                  <th class="center">N°</th>
+                  <th class="center">Ord Missão</th>
+                  <th class="center">Solicitante</th>
+                  <th class="center">Unidade</th>
+                  <th class="center">Procedência</th>
+                  <th class="center">Destino</th>
+                  <th class="center">N° Envolvidos</th>
+                  <th class="center">Liberação</th>
                 </tr>
               </thead>
 
@@ -93,12 +94,19 @@
                 @foreach ($qtn as $qtns)
                   <tr>
                     <th scope="row">{{ $qtns->id }}</th>
-                    <td style="width: 15%" >{{ $qtns->os}}</td>
-                    <td style="width: 25%" >{{ $qtns->postoGrad }} {{$qtns->nomeGuerra}}</td>
-                    <td style="width: 15%">{{ $qtns->unidade }}</td>
-                    <td style="width: 15%">{{ $qtns->procedencia }}</td>
-                    <td style="width: 15%">{{ $qtns->destino }}</td>
-                    <td style="width: 15%">{{ $qtns->militares_count }}</td>
+                    <td class="center" style="width: 15%" >{{ $qtns->os}}</td>
+                    <td class="center" style="width: 25%" >{{ $qtns->postoGrad }} {{$qtns->nomeGuerra}}</td>
+                    <td class="center" style="width: 15%">{{ $qtns->unidade }}</td>
+                    <td class="center" style="width: 15%">{{ $qtns->procedencia }}</td>
+                    <td class="center" style="width: 15%">{{ $qtns->destino }}</td>
+                    <td class="center" style="width: 15%">{{ $qtns->militares_count }}</td>
+                    <td class="center" style="width: 15%">
+                      @if ( $qtns->atendimento == 'ok')
+                        Atendida
+                      @else
+                        Não atendida
+                      @endif
+                       </td>
                   </tr>
                 @endforeach
 

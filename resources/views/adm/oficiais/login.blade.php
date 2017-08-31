@@ -15,7 +15,8 @@
 <div class="row">
   <div class="col s4 offset-s2">
     <blockquote>
-      Digite o SARAM e a senha do antigo Sistema SASIS
+      Digite o SARAM e a senha do antigo Sistema SASIS. <br>
+      Área destinada aos Oficiais de Ligação  e ao OPO.
     </blockquote>
   </div>
 </div>

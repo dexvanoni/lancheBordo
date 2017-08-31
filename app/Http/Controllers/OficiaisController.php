@@ -77,7 +77,8 @@ class OficiaisController extends Controller
         $comissaria->save();
 
         Session::flash('mensagem_edit', "Requisição Autorizada!");
-        return redirect()->route('volta');
+        return redirect()->action('OficiaisController@index');
+        //return redirect()->route('oficiais.index');
       }
 
 }
