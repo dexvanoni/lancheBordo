@@ -55,7 +55,7 @@ class OficiaisController extends Controller
       {
 
         $comissaria = Comissaria::orderBy('id')->paginate(50000);
-        return view('oficiais.index',compact('comissaria'));
+        return view('adm.oficiais.index',compact('comissaria'));
 
       }
 
