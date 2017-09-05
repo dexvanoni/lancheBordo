@@ -6,7 +6,7 @@
 @endsection
 
 @section('topo')
-  COMISSARIA
+  COMISSARIA - Requisições
 @endsection
 
 
@@ -24,31 +24,10 @@
     <a class="btn tooltipped btn-floating pulse " href="{{ route('requisicao.create')}}" data-position="top" data-delay="50" data-tooltip="Nova Requisições"><i class="material-icons">touch_app</i></a>
     <a class="btn tooltipped btn-floating pulse" href="/login" data-position="top" data-delay="50" data-tooltip="Comissaria"><i class="material-icons">local_dining</i></a>
     <a class="btn tooltipped btn-floating pulse " href="/log" data-position="top" data-delay="50" data-tooltip="Autenticadores"><i class="material-icons">event_available</i></a>
+    <a class="btn tooltipped btn-floating pulse red " href="{{ route('avisos') }}" data-position="top" data-delay="50" data-tooltip="Avisos"><i class="material-icons">error</i></a>
   </div>
-{{--@if (Session::has('mensagem_create'))
-   <div class="card-panel teal lighten-4">{{Session::get('mensagem_create')}}</div>
-@endif--}}
-<!--  <div style="margin-top: 50px" class="row">
-    <div class="col s3 offset-s3">
-      <a class="waves-effect waves-light btn" href=""><i class="material-icons left">border_color</i>Fazer Requisição</a>
-    </div>
-  <div class="col s3 offset-s1">
-      <a class="waves-effect waves-light btn" href=""><i class="material-icons left">desktop_windows</i>Ver Requisições</a>
-    </div>
-  </div>-->
-  <div style="margin-top: 40px" class="row">
-    <div class="col s11">
-      <blockquote>
-        Avisos:<br>
-        - As solicitações de lanche de bordo deverão ser solicitadas pelo Cmte da aeronave!<br>
-        - As requisições deverão ser autorizadas pelo OPO ou em caso de manobras, pelos Oficiais de ligação.<br>
-        - Consulte o andamento de sua requisição.<br>
-        - Fluxo da requisição: Criação da requisição / Autorização do OPO ou Of. Lig. / Atendimento da Comissaria / Retirada do material. <br>
-        - Cada etapa do fluxo depende necessariamente da etapa anterior.<br>
-        - Dúvidas quanto ao preenchimento, favor entrar em contato via ramal 3222 com a Comissaria do Rancho.
-      </blockquote>
-    </div>
-  </div>
+
+
 </div>
 
 @endsection

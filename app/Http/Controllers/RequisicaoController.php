@@ -108,4 +108,8 @@ class RequisicaoController extends Controller
       }
 
 
+      public function avisos(){
+        return view('avisos');
+      }
+
 }

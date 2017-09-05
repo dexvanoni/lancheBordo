@@ -37,6 +37,11 @@ Route::get('/log', function () {
     return view('adm.oficiais.login');
 });
 
+Route::get('/avisos', array(
+  'as' => 'avisos',
+  'uses' => 'RequisicaoController@avisos'
+));
+
 Route::post('/log', 'LoginController@doLogin');
 
 Route::get('/account/sign-out', array(
@@ -48,6 +53,7 @@ Route::post('/relatorio', 'RequisicaoController@pesquisa');
 
 Route::resource('requisicao', 'RequisicaoController');
 Route::resource('oficiais', 'OficiaisController');
+Route::resource('autenticadores', 'AutenticadoresController');
 
 Route::get('/relatorios', array(
   'as' => 'relatorios',

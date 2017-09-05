@@ -27,6 +27,9 @@ class LoginController extends Controller
     $adm2='';
     if ($adm1) {
       $adm2 = $adm1->saram;
+    } else {
+      Session::flash('msgLogin', 'SARAM não existe no Sistema SASIS. Tente novamente!');
+      return view('adm.oficiais.login');
     }
 
     if ($adm2) {
@@ -44,60 +47,7 @@ class LoginController extends Controller
     ->get();
     $posto = $posto[0]->pgabrev;
 
-    $valor1 = DB::table('tb_valores_diaria')
-    ->where([
-      ['posto', '=', $posto],
-      ['cidades', '=', 'val_br_am_rj']
-      ])->get();
-      $valor2 = DB::table('tb_valores_diaria')
-      ->where([
-        ['posto', '=', $posto],
-        ['cidades', '=', 'val_bh_fl_pa_rc_sl_sp']
-        ])->get();
-        $valor3 = DB::table('tb_valores_diaria')
-        ->where([
-          ['posto', '=', $posto],
-          ['cidades', '=', 'val_capitais']
-          ])->get();
-          $valor4 = DB::table('tb_valores_diaria')
-          ->where([
-            ['posto', '=', $posto],
-            ['cidades', '=', 'val_cidades']
-            ])->get();
-
-            //$valor1 = Valor::where('posto', '=', $posto)->where('cidades', '=', 'val_br_am_rj');
-            $val1_1 = $valor1[0]->valor;
-            //$valor2 = Valor::where('posto', '=', $posto)->where('cidades', '=', 'val_bh_fl_pa_rc_sl_sp');
-            $val2_2 = $valor2[0]->valor;
-            //$valor3 = Valor::where('posto', '=', $posto)->where('cidades', '=', 'val_capitais');
-            $val3_3 = $valor3[0]->valor;
-            //$valor4 = Valor::where('posto', '=', $posto)->where('cidades', '=', 'val_cidades');
-            $val4_4 = $valor4[0]->valor;
-
-
-            if( $usuario && $senha && $adm1) {
-
-              //Abrindo as seções
-
-              $grad='';
-              Session::put('grad', $posto);
-              $pgrad = Session::get('grad');
-
-              $val1='';
-              Session::put('val1', $val1_1);
-              $valor_1 = Session::get('val1');
-
-              $val2='';
-              Session::put('val2', $val2_2);
-              $valor_2 = Session::get('val2');
-
-              $val3='';
-              Session::put('val3', $val3_3);
-              $valor_3 = Session::get('val3');
-
-              $val4='';
-              Session::put('val4', $val4_4);
-              $valor_4 = Session::get('val4');
+          if( $usuario && $senha && $adm1) {
 
               $peslogin='';
               Session::put('peslogin', $usuario->peslogin);
@@ -149,9 +99,10 @@ class LoginController extends Controller
                         ->get();
               $tela = 'adm';
 
-
               return view('adm.oficiais.index', compact('usuario', 'comissaria', 'tela', 'admin', 'posto', 'adm2', 'valor1'));
+
             } else {
+
               if ($adm2 == '') {
                 Session::flash('msgLogin', 'Erro! Você não é um Autorizador. Tente Novamente.');
               } else {

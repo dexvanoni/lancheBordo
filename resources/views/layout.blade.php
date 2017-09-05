@@ -45,6 +45,7 @@
       @if (isset($tela) AND isset($admin))
         <li><a class="teste" href="{{ route('relatorios')}}">Relatórios</a></li>
         <li><a class="teste" href="{{ route('volta')}}">Atender</a></li>
+        <li><a class="teste" href="{{ route('autenticadores.index')}}">Autenticadores</a></li>
       @endif
     </ul>
     <nav>
